@@ -3,10 +3,7 @@ name: apisix all in one docker
 on:
   push:
     branches:
-      - master
-  pull_request:
-    branches:
-      - master
+      - ttttt
 
 jobs:
   build:
@@ -24,6 +21,9 @@ jobs:
       - name: Start
         run: |
           docker run -v `pwd`/all-in-one/apisix/config.yaml:/usr/local/apisix/conf/config.yaml -p 9180:9180 -p 9080:9080 -p 2379:2379 --name apisix -d apache/apisix:whole
+
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
 
       - name: Test
         run: |
